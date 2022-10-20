@@ -4,7 +4,7 @@ import { FormContext } from "../../context/ContextoFormulario";
 
 const Input = ({ name, label, type = "text" }) => {
   
-  const {dataForm, setDataForm} = useContext(FormContext)
+  const [store, dispatch] = useContext(FormContext)
   
   // Aqui deberíamos acceder al estado global para poder obtener los datos
   // del formulario y una manera de actualizar los mismos.
@@ -25,10 +25,7 @@ const Input = ({ name, label, type = "text" }) => {
     // cada input.
     // TIP: Podemos utilizar el nombre de cada input para guardar
     // los datos en el estado global usando una notación de { clave: valor }
-    setDataForm({
-      ...dataForm,
-      [name]: inputState,
-    })
+    dispatch({ type:'ACTUALIZAR_ENTRENADOR', payload:{ [name] : inputState}})
   };
   
 
